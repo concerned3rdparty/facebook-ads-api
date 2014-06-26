@@ -769,6 +769,24 @@ class AdsAPI(object):
             args['name'] = name
         return self.make_request(path, 'POST', args, batch=batch)
 
+    def create_adcreative_mobile_app_install(
+            self, account_id, object_store_url, image_hash,
+            body=None, actor_name=None, actor_image_hash=None,
+            call_to_action_type=None, video_id=None, batch=False):
+        """Creates a mobile app install ad creative in the given ad account."""
+        path = 'act_%s/adcreatives' % account_id
+        args = {
+            'object_store_url': object_store_url,
+            'image_hash': image_hash,
+        }
+        args['body'] = body
+        args['actor_name'] = actor_name
+        args['actor_image_hash'] = actor_image_hash
+        args['call_to_action_type'] = call_to_action_type
+        args['video_id'] = video_id
+        args = {k: v for k, v in args.iteritems() if v is not None}
+        return self.make_request(path, 'POST', args, batch=batch)
+
     def create_adgroup(self, account_id, name, bid_type, bid_info, campaign_id,
                        creative_id, targeting, max_bid=None, conversion_specs=None,
                        tracking_specs=None, view_tags=None, objective=None,
