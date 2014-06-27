@@ -778,12 +778,12 @@ class AdsAPI(object):
         args = {
             'object_store_url': object_store_url,
             'image_hash': image_hash,
+            'body': body,
+            'actor_name': actor_name,
+            'actor_image_hash': actor_image_hash,
+            'call_to_action_type': call_to_action_type,
+            'video_id': video_id,
         }
-        args['body'] = body
-        args['actor_name'] = actor_name
-        args['actor_image_hash'] = actor_image_hash
-        args['call_to_action_type'] = call_to_action_type
-        args['video_id'] = video_id
         args = {k: v for k, v in args.iteritems() if v is not None}
         return self.make_request(path, 'POST', args, batch=batch)
 
