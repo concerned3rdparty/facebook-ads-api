@@ -81,6 +81,7 @@ class AdsAPIError(Exception):
             self.str = self.message
             self.error = {'message': self.message}
         else:
+            import pdb; pdb.set_trace()
             error_dict = self.error.get('error', {})
             self.message = error_dict.get('message', '')
             # New error details in api 2.2
